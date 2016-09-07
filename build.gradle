@@ -1,0 +1,27 @@
+apply plugin:'java'
+
+group = 'com.funofcoding.learning'
+version = '1.0.0'
+sourceCompatibility = targetCompatibility=1.8
+
+
+repositories{
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.10'
+    runtime 'org.slf4j:slf4j-simple:1.7.10'
+    testCompile 'junit:junit:4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': "${project.group}.App"
+    }
+}
+
+task sourceJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
